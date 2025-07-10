@@ -82,3 +82,7 @@ def logout_page():
     logout_user()
     flash("You have been logged out!", category='info')
     return redirect(url_for("home_page"))
+
+@app.route("/nike")
+def nike():
+    return render_template("Nike.html")
