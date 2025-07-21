@@ -14,6 +14,8 @@ app.config['SESSION_PERMANENT'] = False
 Session(app)
 
 
+
+
 # Load products data
 def load_products():
     try:
@@ -36,7 +38,7 @@ def load_products():
                     "id": 2,
                     "name": "Nike React Infinity Run",
                     "price": 13280.00,
-                    "image": "nike/W+NIKE+REACT+INFINITY+RUN+FK+3.jpg",
+                    "image": "nike/react-infinity.jpg ",
                     "description": "Designed to help reduce injury and keep you running.",
                     "sizes": ["7", "8", "9", "10", "11", "12"],
                     "featured": False
@@ -47,7 +49,7 @@ def load_products():
                     "id": 3,
                     "name": "Adidas Ultraboost 22",
                     "price": 14940.00,
-                    "image": "adidas/Adidas-Ultraboost-22.jpg",
+                    "image": "adidas/ultraboost-22.jpg",
                     "description": "Our most responsive running shoe yet.",
                     "sizes": ["7", "8", "9", "10", "11", "12"],
                     "featured": True
@@ -56,7 +58,7 @@ def load_products():
                     "id": 4,
                     "name": "Adidas Stan Smith",
                     "price": 6640.00,
-                    "image": "adidas/Stan_Smith_Shoes_White_M20324_06_standard.jpg",
+                    "image": "adidas/stan-smith.jpg ",
                     "description": "The iconic tennis shoe that never goes out of style.",
                     "sizes": ["7", "8", "9", "10", "11", "12"],
                     "featured": False
@@ -67,7 +69,7 @@ def load_products():
                     "id": 5,
                     "name": "Puma RS-X",
                     "price": 9130.00,
-                    "image": "puma/RS-X³-Puzzle-Men's-Sneakers.jpg",
+                    "image": "puma/rs-x.jpg ",
                     "description": "Bold design meets maximum comfort.",
                     "sizes": ["7", "8", "9", "10", "11", "12"],
                     "featured": True
@@ -78,7 +80,7 @@ def load_products():
                     "id": 6,
                     "name": "New Balance 990v5",
                     "price": 14525.00,
-                    "image": "newbalance/NewBalance990v5.jpg",
+                    "image": "newbalance/990v5.jpg ",
                     "description": "Made in USA premium running shoe.",
                     "sizes": ["7", "8", "9", "10", "11", "12"],
                     "featured": False
@@ -89,7 +91,7 @@ def load_products():
                     "id": 7,
                     "name": "Converse Chuck 70",
                     "price": 4565.00,
-                    "image": "converse/converse-chuck-70-hi-chucks-black-black.jpg",
+                    "image": "converse/chuck-70.jpg",
                     "description": "The original basketball shoe, now a timeless classic.",
                     "sizes": ["7", "8", "9", "10", "11", "12"],
                     "featured": True
@@ -99,6 +101,7 @@ def load_products():
 
 
 products_data = load_products()
+
 
 
 # Authentication decorator
@@ -528,6 +531,8 @@ def admin():
     conn.close()
 
     return render_template('admin.html', orders=orders, products=products_data)
+
+
 
 
 if __name__ == '__main__':

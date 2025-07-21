@@ -19,13 +19,14 @@
                         <h6 class="mb-1">{{ item.name }}</h6>
                         <small class="text-secondary">{{ item.brand|title }} | Size: {{ item.size }}</small>
                     </div>
-                    <div class="col-md-2">
-                        <div class="quantity-controls">
-                            <span class="quantity">Qty: {{ item.quantity }}</span>
+                    <div class="col-md-2 w-1/5">
+                        <div class="flex items-center justify-center bg-gray-100 rounded px-3 py-2">
+                            <span class="text-sm font-medium text-gray-700">Qty:</span>
+                            <span class="ml-2 text-base font-semibold text-gray-900">{{ item.quantity }}</span>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <div class="price">₹{{ "{:,.0f}".format(item.price) }}</div>
+                        <div class="price">Rs.{{ "{:,.0f}".format(item.price) }}</div>
                     </div>
                     <div class="col-md-2">
                         <form method="POST" action="{{ url_for('remove_from_cart') }}" class="d-inline">
@@ -46,7 +47,7 @@
                 <h5 class="mb-3">Order Summary</h5>
                 <div class="summary-row">
                     <span>Subtotal:</span>
-                    <span>₹{{ "{:,.0f}".format(total) }}</span>
+                    <span>Rs.{{ "{:,.0f}".format(total) }}</span>
                 </div>
                 <div class="summary-row">
                     <span>Shipping:</span>
@@ -54,7 +55,7 @@
                 </div>
                 <div class="summary-row total">
                     <span>Total:</span>
-                    <span>₹{{ "{:,.0f}".format(total + (0 if total >= 8300 else 830)) }}</span>
+                    <span>Rs.{{ "{:,.0f}".format(total + (0 if total >= 8300 else 830)) }}</span>
                 </div>
                 <a href="{{ url_for('checkout') }}" class="btn btn-accent btn-block btn-lg mt-3">
                     Proceed to Checkout
