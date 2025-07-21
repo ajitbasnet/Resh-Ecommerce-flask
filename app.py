@@ -6,6 +6,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 import sqlite3
 from datetime import datetime
+from jinja2 import Environment
+import json
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here-change-in-production'
@@ -496,12 +498,17 @@ def login():
         if user and check_password_hash(user[2], password):
             session['user_id'] = user[0]
             session['user_name'] = user[1]
-            session['is_admin'] = user[3]
-            return redirect(url_for('index'))
+            session['is_admin'] = bool(user[3])  # <- cast to boolean here
+
+            if session['is_admin']:
+                return redirect(url_for('admin'))
+            else:
+                return redirect(url_for('index'))
         else:
             return render_template('login.html', error='Invalid email or password')
 
     return render_template('login.html')
+
 
 
 @app.route('/logout')
@@ -531,13 +538,18 @@ def profile():
 @admin_required
 def admin():
     conn = sqlite3.connect('ecommerce.db')
+    conn.row_factory = sqlite3.Row  # Enable dict-like access
     c = conn.cursor()
+
     c.execute("SELECT * FROM orders ORDER BY created_at DESC")
     orders = c.fetchall()
     conn.close()
 
     return render_template('admin.html', orders=orders, products=products_data)
 
+@app.context_processor
+def utility_processor():
+    return dict(loads=json.loads)
 
 if __name__ == '__main__':
     app.run(debug=True)
