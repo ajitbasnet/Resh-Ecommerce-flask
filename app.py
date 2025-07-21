@@ -11,8 +11,9 @@ app = Flask(__name__)
 app.secret_key = 'your-secret-key-here-change-in-production'
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_FILE_DIR'] = os.path.join(app.root_path, 'flask_session')
+os.makedirs(app.config['SESSION_FILE_DIR'], exist_ok=True)
 Session(app)
-
 
 # Load products data
 def load_products():
