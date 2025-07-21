@@ -359,6 +359,9 @@ def process_checkout():
     tax = total * 0.10
     final_total = total + tax + (0 if total >= 8300 else 830)
 
+    # Order date
+    order_date = datetime.now().strftime('%B %d, %Y')
+
     # Save order to database
     conn = sqlite3.connect('ecommerce.db')
     c = conn.cursor()
@@ -382,8 +385,13 @@ def process_checkout():
     session['last_order'] = order_number
     session['cart'] = []
     session.modified = True
-    return render_template('order_confirmation.html', order_number=order_number, total=final_total)
 
+    return render_template(
+        'order_confirmation.html',
+        order_number=order_number,
+        total=final_total,
+        order_date=order_date
+    )
 
 # Footer pages
 @app.route('/about')
