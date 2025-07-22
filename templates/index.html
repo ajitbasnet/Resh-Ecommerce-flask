@@ -50,7 +50,7 @@
                         <div class="brand-badge">{{ product.brand|title }}</div>
                         <h5 class="product-title">{{ product.name }}</h5>
                         <p class="product-description">{{ product.description[:80] }}...</p>
-                        <div class="product-price">₹{{ "{:,.0f}".format(product.price) }}</div>
+                        <div class="product-price">Rs.{{ "{:,.0f}".format(product.price) }}</div>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <a href="{{ url_for('nike') }}" class="brand-card">
                     <div class="brand-logo">
-                        <img src="{{ url_for('static', filename='/images/Logo_NIKE.svg.png') }}" alt="Nike"
+                        <img src="{{ url_for('static', filename='images/Logo_NIKE.svg.png') }}" alt="Nike"
                              class="img-fluid" width="120" height="80">
                     </div>
                     <h6 class="brand-name">Nike</h6>
@@ -80,7 +80,7 @@
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <a href="{{ url_for('adidas') }}" class="brand-card">
                     <div class="brand-logo">
-                        <img src="{{ url_for('static', filename='/images/Adidas_Logo.png') }}" alt="Adidas"
+                        <img src="{{ url_for('static', filename='images/Adidas_Logo.png') }}" alt="Adidas"
                              class="img-fluid" width="120" height="80">
                     </div>
                     <h6 class="brand-name">Adidas</h6>
@@ -89,7 +89,7 @@
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <a href="{{ url_for('puma') }}" class="brand-card">
                     <div class="brand-logo">
-                        <img src="{{ url_for('static', filename='/images/Puma_complete_logo.png') }}" alt="Puma"
+                        <img src="{{ url_for('static', filename='images/Puma_complete_logo.png') }}" alt="Puma"
                              class="img-fluid" width="120" height="80">
                     </div>
                     <h6 class="brand-name">Puma</h6>
@@ -98,7 +98,7 @@
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <a href="{{ url_for('newbalance') }}" class="brand-card">
                     <div class="brand-logo">
-                        <img src="{{ url_for('static', filename='/images/Newbalancelogo.png') }}" alt="New Balance"
+                        <img src="{{ url_for('static', filename='images/Newbalancelogo.png') }}" alt="New Balance"
                              class="img-fluid" width="120" height="80">
                     </div>
                     <h6 class="brand-name">New Balance</h6>
@@ -107,7 +107,7 @@
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <a href="{{ url_for('converse') }}" class="brand-card">
                     <div class="brand-logo">
-                        <img src="{{ url_for('static', filename='/images/Converse_logo.svg.png') }}" class="img-fluid"
+                        <img src="{{ url_for('static', filename='images/Converse_logo.svg.png') }}" class="img-fluid"
                              alt="Converse" width="120" height="80">
                     </div>
                     <h6 class="brand-name">Converse</h6>

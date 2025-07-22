@@ -538,14 +538,26 @@ def profile():
 @admin_required
 def admin():
     conn = sqlite3.connect('ecommerce.db')
-    conn.row_factory = sqlite3.Row  # Enable dict-like access
+    conn.row_factory = sqlite3.Row
     c = conn.cursor()
 
+    # Fetch orders
     c.execute("SELECT * FROM orders ORDER BY created_at DESC")
     orders = c.fetchall()
+
+    # Calculate total revenue and pending orders
+    total_revenue = sum(order['total'] for order in orders if order['total'])
+    pending_orders = sum(1 for order in orders if order['status'] == 'pending')
+
     conn.close()
 
-    return render_template('admin.html', orders=orders, products=products_data)
+    return render_template(
+        'admin.html',
+        orders=orders,
+        products=products_data,  # Ensure this is globally defined or imported
+        total_revenue=total_revenue,
+        pending_orders=pending_orders
+    )
 
 @app.context_processor
 def utility_processor():

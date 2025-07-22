@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import  from "../static/js/main"
+import something from "../static/js/main"; // or use { something } depending on your export
 
 export default function SyntheticV0PageForDeployment() {
-  return < />
+  return <></>; // or return actual content
 }

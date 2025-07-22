@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
+<link rel="icon" type="image" href="{{ url_for('static', filename='icons/Adidas_Logo.png') }}">
 {% block title %}{{ brand }} Shoes - Resh{% endblock %}
+
 
 {% block content %}
 <div class="container py-5">
@@ -26,7 +28,7 @@
                     <div class="brand-badge">{{ brand }}</div>
                     <h5 class="product-title">{{ product.name }}</h5>
                     <p class="product-description">{{ product.description[:80] }}...</p>
-                    <div class="product-price">₹{{ "{:,.0f}".format(product.price) }}</div>
+                    <div class="product-price">Rs.{{ "{:,.0f}".format(product.price) }}</div>
                 </div>
             </div>
         </div>

@@ -154,6 +154,7 @@ body {
   }
 }
 
+
 /* Main Content */
 .main-content {
   margin-top: 76px;
@@ -187,11 +188,10 @@ body {
 }
 
 /* Advanced Button Styles */
-/* Updated .btn-accent for Signup/Resh button to soft blue */
 .btn-accent {
-  background: hsl(197, 37%, 24%) !important;
-  border: 2px solid hsl(197, 37%, 24%) !important;
-  color: white !important;
+  background: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  color: var(--bg-color);
   font-weight: 600;
   padding: 12px 24px;
   border-radius: 8px;
@@ -213,9 +213,9 @@ body {
 }
 
 .btn-accent:hover {
-  background: hsl(197, 37%, 34%) !important;
-  border-color: hsl(197, 37%, 34%) !important;
-  color: white !important;
+  background: var(--hover-color);
+  border-color: var(--hover-color);
+  color: var(--bg-color);
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 25px rgba(36, 41, 46, 0.2);
 }
