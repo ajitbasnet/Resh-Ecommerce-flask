@@ -70,7 +70,7 @@
                                         <i class="fas fa-rupee-sign text-warning"></i>
                                     </div>
                                     <div class="stat-info">
-                                        <h3>₹{{ "{:,.0f}".format(total_revenue) }}</h3>
+                                        <h3>Rs.{{ "{:,.0f}".format(total_revenue) }}</h3>
                                         <p>Total Revenue</p>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                                         {% for order in orders[:5] %}
                                         <tr>
                                             <td>#{{ order[2] }}</td>
-                                            <td>₹{{ "{:,.0f}".format(order[4]|float) }}</td>
+                                            <td>Rs.{{ "{:,.0f}".format(order[4]|float) }}</td>
                                             <td>
                                                 <span class="badge badge-{% if order[5] == 'completed' %}success{% elif order[5] == 'pending' %}warning{% else %}info{% endif %}">
                                                     {{ order[5]|title }}
@@ -139,11 +139,14 @@
                                     {% for product in brand_products %}
                                     <div class="col-md-4 mb-3">
                                         <div class="admin-product-card">
-                                            <img src="{{ url_for('static', filename='images/' + product.image) }}"
-                                                alt="{{ product.name }}" class="img-fluid" onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/placeholder.jpg') }}';">
+                                            <img src="{{ url_for('static', filename=product.image) }}"
+                                                 alt="{{ product.name }}" class="img-fluid"
+                                                 onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/placeholder.jpg') }}';">
+
+
                                             <div class="product-info">
                                                 <h6>{{ product.name }}</h6>
-                                                <p class="price">₹{{ "{:,.0f}".format(product.price) }}</p>
+                                                <p class="price">Rs.{{ "{:,.0f}".format(product.price) }}</p>
                                                 <div class="product-actions">
                                                     <button class="btn btn-sm btn-outline-primary" onclick="editProduct({{ product.id }})">
                                                         <i class="fas fa-edit"></i>
@@ -187,7 +190,7 @@
                                         <td>#{{ order[2] }}</td>
                                         <td>User {{ order[1] }}</td>
                                         <td>{{ loads(order[3])|length if order[3] else 0 }} items</td>
-                                        <td>₹{{ "{:,.0f}".format(order[4]|float) }}</td>
+                                        <td>Rs.{{ "{:,.0f}".format(order[4]|float) }}</td>
                                         <td>
                                             <select class="form-control form-control-sm" onchange="updateOrderStatus({{ order[0] }}, this.value)">
                                                 <option value="pending" {% if order[5] == 'pending' %}selected{% endif %}>Pending</option>
@@ -237,7 +240,7 @@
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="productPrice">Price (₹)</label>
+                                    <label for="productPrice">Price (Rs.)</label>
                                     <input type="number" class="form-control" id="productPrice" required min="0" step="0.01">
                                 </div>
                                 <div class="col-md-6 mb-3">
